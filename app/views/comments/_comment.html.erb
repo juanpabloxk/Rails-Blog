@@ -1,0 +1,15 @@
+<div class="card mb-2">
+  <div class="card-header">
+    @<%= comment.commenter %>
+    <%= link_to 'delete', [comment.article, comment],
+        method: :delete,
+        data: { confirm: "Are you sure?" } %>
+  </div>
+  <div class="card-body">
+    <blockquote class="blockquote">
+      <p><%= comment.body %></p>
+      <footer>  </footer>
+      </blockquote>
+    </div>
+  </div>
+  

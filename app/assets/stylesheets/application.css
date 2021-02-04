@@ -13,3 +13,5 @@
  *= require_tree .
  *= require_self
  */
+ .rounded {border-radius: 2rem !important;}
+ .hidden {display: none;}
