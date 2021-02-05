@@ -1,6 +1,8 @@
 <div class="blog-post">
+  
   <h2 class="blog-post-title"><%= @article.title %></h2>
-  <p><%= @article.body %></p>
+  <img class="m-3 img-responsive" style="float:right; max-width: 50%;" src=<%= @article.image_url %> alt="">
+  <p><%= simple_format(@article.body) %></p>
   
   <nav class="blog-pagination mb-4">
     <%= link_to "Edit post", edit_article_path(@article), class: "btn btn-outline-secondary rounded" %>
@@ -11,8 +13,12 @@
   </nav>
   
   <% unless @article.comments.empty? %>
-    <h2 class="text-center">Comments</h2>
-    <%= render @article.comments %>
+  <h2 class="mt-5">Comments</h2>
+  <div class="mt-4">
+    <div class="">
+      <%= render @article.comments %>
+    </div>
+  </div>
   <% end %>
   
   <div class="hidden" id="add_comment">

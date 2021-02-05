@@ -1,15 +1,15 @@
-<div class="card mb-2">
+<div class="card mb-4">
   <div class="card-header">
-    @<%= comment.commenter %>
-    <%= link_to 'delete', [comment.article, comment],
-        method: :delete,
-        data: { confirm: "Are you sure?" } %>
+    <span class="font-weight-bold">@<%= comment.commenter %></span> on
+    <span><%=  comment.created_at.strftime("%B %d of %Y") %></span>
+    <%= link_to 'delete', [comment.article.category, comment.article, comment],
+    method: :delete,
+    data: { confirm: "Are you sure?" }, class: "float-right" %>
   </div>
   <div class="card-body">
     <blockquote class="blockquote">
-      <p><%= comment.body %></p>
+      <p><%= simple_format(comment.body) %></p>
       <footer>  </footer>
-      </blockquote>
-    </div>
+    </blockquote>
   </div>
-  
+</div>
