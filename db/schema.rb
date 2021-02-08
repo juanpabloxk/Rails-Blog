@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 2021_02_04_202357) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "articles", force: :cascade do |t|
     t.string "title"
     t.text "body"
@@ -19,7 +22,7 @@ ActiveRecord::Schema.define(version: 2021_02_04_202357) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "status"
     t.string "image_url"
-    t.integer "category_id", null: false
+    t.bigint "category_id", null: false
     t.index ["category_id"], name: "index_articles_on_category_id"
   end
 
@@ -33,7 +36,7 @@ ActiveRecord::Schema.define(version: 2021_02_04_202357) do
   create_table "comments", force: :cascade do |t|
     t.string "commenter"
     t.text "body"
-    t.integer "article_id", null: false
+    t.bigint "article_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "status"
