@@ -1,9 +1,6 @@
 class SessionsController < ApplicationController
-  skip_before_action :authorized, only: [:new, :create, :wellcome]
-
-  def user_authenticated?
-    @user && @user.authenticate(params[:password])
-  end
+  skip_before_action :authorized, only: [:new, :create, :wellcome, :auth_errors, :unauthorized]
+  helper_method :auth_errors
 
   def new
     render layout: 'external'
@@ -11,10 +8,9 @@ class SessionsController < ApplicationController
   
   def create
     @user = User.find_by(username: params[:username])
-    auth = @user && @user.authenticate(params[:password])
     if @user && @user.authenticate(params[:password])
       session[:user_id] = @user.id
-      redirect_to '/'
+      redirect_to '/articles'
     else
       redirect_to '/login'
     end
@@ -24,16 +20,17 @@ class SessionsController < ApplicationController
     session[:user_id] = nil
     redirect_to '/wellcome'
   end
+
+  def auth_errors
+    @auth_errors ||= []
+  end
   
-  def login
-    render layout: 'external'
+  def unauthorized
+    @auth_errors = ["You must log-in to see this page"] 
+    wellcome
   end
   
   def wellcome
-    if logged_in?
-      redirect_to '/'
-    else
-      render layout: 'external'
-    end
+    render 'wellcome', layout: 'external'
   end
 end

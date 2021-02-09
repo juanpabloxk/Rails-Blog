@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
-  root 'articles#index'
+  root 'sessions#wellcome'
   resources :users, only: [:new,:create]
+  get "unauthorized", to: 'sessions#unauthorized'
   get "login", to: 'sessions#new'
   post 'login', to: 'sessions#create'
   get "wellcome", to: "sessions#wellcome"
