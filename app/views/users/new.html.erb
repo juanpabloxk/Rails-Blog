@@ -1,8 +1,19 @@
-<h1>Sign Up</h1>
-<%= form_for @user do |f|%>
-  <%= f.label :name%><br>
-  <%= f.text_field :name%><br>
-  <%= f.label :password%><br>
-  <%= f.password_field :password%><br>
-  <%= f.submit %>
-<%end%>
+<h2 class="text-center mb-5">Create account</h2>
+<div class="form-signin text-center">
+  <%= form_for @user do |f|%>
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <div class="input-group-text">Username</div>
+      </div>
+      <%= f.text_field :username, class: 'form-control' %><br>
+    </div>
+    <div class="input-group mb-4">
+      <div class="input-group-prepend">
+        <div class="input-group-text">Password</div>
+      </div>
+      <%= f.password_field :password, class: 'form-control' %><br>
+    </div>
+    <%= f.submit %>
+  <%end%>
+</div>
+

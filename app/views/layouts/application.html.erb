@@ -20,6 +20,15 @@
           <%= link_to category.name, category, class: "text-muted" %>
           <% end %>
           <a class="btn btn-sm btn-outline-secondary" href="#">Sign up</a>
+          <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <%= current_user.username %>
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <%= link_to 'Profile', nil, class: "dropdown-item" %>
+              <%= link_to 'Logout', "/logout", method: "delete", class: "dropdown-item" %>
+            </div>
+          </div>
         </nav>
       </div>
     </header>
