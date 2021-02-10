@@ -26,4 +26,12 @@ class UsersController < ApplicationController
     followed.followers << follower
     redirect_to "/users/#{params[:followed_user_id]}"
   end
+
+  def del_follower
+    follower = User.find(params[:follower_user_id])
+    followed = User.find(params[:followed_user_id])
+    followed.followers.delete(follower) 
+    redirect_to "/users/#{params[:followed_user_id]}"
+  end
+
 end
