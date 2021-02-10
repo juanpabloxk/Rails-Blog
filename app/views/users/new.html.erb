@@ -1,6 +1,9 @@
 <h2 class="text-center mb-5">Create account</h2>
 <div class="form-signin text-center">
   <%= form_for @user do |f|%>
+    <% @user.errors.full_messages.each do |message| %>
+        <p class="alert alert-danger mt-3"><%= message %></p>
+    <%end%>
     <div class="input-group mb-3">
       <div class="input-group-prepend">
         <div class="input-group-text">Username</div>
@@ -13,7 +16,7 @@
       </div>
       <%= f.password_field :password, class: 'form-control' %><br>
     </div>
-    <%= f.submit %>
+    <%= f.submit "Create", :class => 'btn btn-lg btn-primary btn-block' %>
   <%end%>
 </div>
 
