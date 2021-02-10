@@ -6,7 +6,6 @@ class UsersController < ApplicationController
   end
 
   def show
-    @followers = %w[Hugo Paco Luis Lucas]
     @user = User.find(params[:id])
   end
 
@@ -19,5 +18,12 @@ class UsersController < ApplicationController
     @user = User.create(params.require(:user).permit(:username,:password))
     session[:user_id] = @user.id
     redirect_to '/articles'
+  end
+
+  def add_follower
+    follower = User.find(params[:follower_user_id])
+    followed = User.find(params[:followed_user_id])
+    followed.followers << follower
+    redirect_to "/users/#{params[:followed_user_id]}"
   end
 end
