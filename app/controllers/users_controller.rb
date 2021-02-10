@@ -6,6 +6,7 @@ class UsersController < ApplicationController
   end
 
   def show
+    @followers = %w[Hugo Paco Luis Lucas]
     @user = User.find(params[:id])
   end
 
