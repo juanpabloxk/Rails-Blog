@@ -18,62 +18,26 @@
 <% end %>
 <br>
 
-<div class="row mt-2">    
+<div class="row mt-2">
+
     <div class="col-xl-3 col-md-6 mb-4">
         <div class="card border-left-primary shadow h-100 py-2">
             <div class="card-body">
                 <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
                         <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                            Followers</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">
-                                <%= @user.followers.length %>
-                            </div>
+                            Followers
                         </div>
-                        <div class="col-auto">
-                            <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">
+                            <%= @user.followers.length %>
                         </div>
+                    </div>
+                    <div class="col-auto">
+                        <i class="fas fa-calendar fa-2x text-gray-300"></i>
                     </div>
                 </div>
             </div>
-    </div>
-        
-    <div class="col-xl-3 col-md-6 mb-4">
-            <div class="card border-left-primary shadow h-100 py-2">
-                <div class="card-body">
-                    <div class="row no-gutters align-items-center">
-                        <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                Following</div>
-                                <div class="h5 mb-0 font-weight-bold text-gray-800">
-                                    <%= @user.followeds.length %>
-                                </div>
-                            </div>
-                            <div class="col-auto">
-                                <i class="fas fa-calendar fa-2x text-gray-300"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-    </div>
-            
-    <div class="col-xl-3 col-md-6 mb-4">
-        <div class="card border-left-primary shadow h-100 py-2">
-            <div class="card-body">
-                <div class="row no-gutters align-items-center">
-                    <div class="col mr-2">
-                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                            Posts</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">
-                                <%= @user.articles.length %>
-                            </div>
-                        </div>
-                        <div class="col-auto">
-                            <i class="fas fa-calendar fa-2x text-gray-300"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        </div>
     </div>
 
     <div class="col-xl-3 col-md-6 mb-4">
@@ -82,22 +46,60 @@
                 <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
                         <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                            Comments</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">
-                                <%= @user.comments.length %>
-                            </div>
+                        Following</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">
+                            <%= @user.followeds.length %>
                         </div>
-                        <div class="col-auto">
-                            <i class="fas fa-calendar fa-2x text-gray-300"></i>
-                        </div>
+                    </div>
+                    <div class="col-auto">
+                        <i class="fas fa-calendar fa-2x text-gray-300"></i>
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
+
+    <div class="col-xl-3 col-md-6 mb-4">
+        <div class="card border-left-primary shadow h-100 py-2">
+            <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                        Posts</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">
+                            <%= @user.articles.length %>
+                        </div>
+                    </div>
+                    <div class="col-auto">
+                        <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xl-3 col-md-6 mb-4">
+        <div class="card border-left-primary shadow h-100 py-2">
+            <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                        Comments</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">
+                            <%= @user.comments.length %>
+                        </div>
+                    </div>
+                    <div class="col-auto">
+                        <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
-                
+
 <div class="row mb-2">
-    
+
     <div class="col-md-6 mt-3">
         <ul class="list-group">
             <h4>Followers:</h4>
@@ -125,7 +127,7 @@
 </div>
 
 <div class="row mb-2">
-    
+
     <div class="col-md-12 mt-3">
         <ul class="list-group">
             <h4>Lattest posts:</h4>

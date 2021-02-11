@@ -20,7 +20,7 @@
                             <% unless cached_categories.nil? || cached_categories.empty? %>
                                 We have news about
                                 <% cached_categories.sample(15).each do |category| %>
-                                    <span class="badge bg-dark bg-secondary text-light"><%= category %></span>
+                                <span class="badge bg-dark bg-secondary text-light"><%= category %></span>
                                 <% end %>
                                 and more...
                             <% end %>

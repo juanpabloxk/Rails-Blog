@@ -4,11 +4,11 @@ class UsersController < ApplicationController
   def index 
     @users = User.all
   end
-
+  
   def show
     @user = User.find(params[:id])
   end
-
+  
   def new
     @user = User.new
     render layout: 'external'
@@ -19,19 +19,18 @@ class UsersController < ApplicationController
     session[:user_id] = @user.id
     redirect_to '/articles'
   end
-
+  
   def add_follower
     follower = User.find(params[:follower_user_id])
     followed = User.find(params[:followed_user_id])
     followed.followers << follower
     redirect_to "/users/#{params[:followed_user_id]}"
   end
-
+  
   def del_follower
     follower = User.find(params[:follower_user_id])
     followed = User.find(params[:followed_user_id])
     followed.followers.delete(follower) 
     redirect_to "/users/#{params[:followed_user_id]}"
   end
-
 end

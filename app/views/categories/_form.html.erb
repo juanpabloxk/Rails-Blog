@@ -1,21 +1,21 @@
 <%= form_with model: category do |form| %>
 
-<% @category.errors.full_messages.each do |message| %>
-<p class="danger"><%= message %></p>
-<%end%>
+  <% @category.errors.full_messages.each do |message| %>
+    <p class="danger"><%= message %></p>
+  <%end%>
 
-<div class="input-group mt-3">
-  <%= form.label :name, class:"input-group-text" %><br>
-  <%= form.text_field :name, class: "form-control" %>
-</div>
+  <div class="input-group mt-3">
+    <%= form.label :name, class:"input-group-text" %><br>
+    <%= form.text_field :name, class: "form-control" %>
+  </div>
 
-<div class="input-group mt-3">
-  <%= form.label :description, class: "input-group-text" %><br>
-  <%= form.text_area :description, class: "big form-control" %><br>
-</div>
+  <div class="input-group mt-3">
+    <%= form.label :description, class: "input-group-text" %><br>
+    <%= form.text_area :description, class: "big form-control" %><br>
+  </div>
 
-<div class="col d-flex justify-content-center mb-4 mt-3">
-  <%= form.submit "Upload", :class => 'btn btn-primary rounded' %>
-</div>
+  <div class="col d-flex justify-content-center mb-4 mt-3">
+    <%= form.submit "Upload", :class => 'btn btn-primary rounded' %>
+  </div>
 
 <% end %>

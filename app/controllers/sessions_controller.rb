@@ -1,7 +1,8 @@
 class SessionsController < ApplicationController
-  skip_before_action :authorized, only: [:new, :create, :wellcome, :auth_errors, :unauthorized]
+  skip_before_action :authorized, 
+      only: [:new, :create, :wellcome, :auth_errors, :unauthorized]
   helper_method :auth_errors
-
+  
   def new
     render layout: 'external'
   end
@@ -15,12 +16,12 @@ class SessionsController < ApplicationController
       redirect_to '/login'
     end
   end
-
+  
   def destroy
     session[:user_id] = nil
     redirect_to '/wellcome'
   end
-
+  
   def auth_errors
     @auth_errors ||= []
   end
