@@ -1,11 +1,11 @@
-<div class="col-4 mb-3">
+<div class="col-4 mb-3" >
     <div class="card">
         <div class="card-body">
-          <h5 class="card-title">@<%= user.username %></h5>
+          <h5 class="card-title">@<%= link_to user.username, user %></h5>
           <h6 class="card-subtitle mb-2 text-muted">Registered user</h6>
           <div style="display: inline-flex;">
             <% if user.followers.include? current_user %>
-              <%= form_tag "/users/#{user.id}/unfollow" do %>
+              <%= form_tag "/users/#{user.id}/unfollow"  do %>
                   <%= hidden_field_tag 'followed_user_id', user.id %>
                   <%= hidden_field_tag 'follower_user_id', current_user.id %>
                   <%= submit_tag "Unfollow", class: "btn btn-outline-secondary rounded" %>

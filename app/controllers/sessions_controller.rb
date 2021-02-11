@@ -1,6 +1,5 @@
 class SessionsController < ApplicationController
-  skip_before_action :authorized, 
-      only: [:new, :create, :wellcome, :auth_errors, :unauthorized]
+  skip_before_action :authorized, only: [:new, :create, :wellcome, :auth_errors, :unauthorized]
   helper_method :auth_errors
   
   def new
@@ -11,15 +10,15 @@ class SessionsController < ApplicationController
     @user = User.find_by(username: params[:username])
     if @user && @user.authenticate(params[:password])
       session[:user_id] = @user.id
-      redirect_to '/articles'
+      redirect_to articles_path
     else
-      redirect_to '/login'
+      redirect_to login_path
     end
   end
   
   def destroy
     session[:user_id] = nil
-    redirect_to '/wellcome'
+    redirect_to wellcome_path
   end
   
   def auth_errors
@@ -32,6 +31,6 @@ class SessionsController < ApplicationController
   end
   
   def wellcome
-    render 'wellcome', layout: 'external'
+    render layout: 'external'
   end
 end
