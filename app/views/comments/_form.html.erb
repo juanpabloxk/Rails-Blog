@@ -3,13 +3,8 @@
   <h2 class="text-center">Add a comment</h2>
   
   <%= form_with model: [ @article.category, @article, @article.comments.build ] do |form| %>
-  <div class="input-group flex-nowrap mb-2">
-    <div class="input-group-prepend">
-      <span class="input-group-text" id="addon-wrapping">Username</span>
-    </div>
-    <%= form.text_field :commenter, class: "form-control" %>
-  </div>
-  
+    <%= form.hidden_field :user_id, value: current_user.id %>
+    
   <div class="input-group mb-2"> 
     <div class="input-group-prepend">
       <span class="input-group-text">Comment</span>

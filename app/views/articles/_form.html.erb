@@ -1,5 +1,7 @@
 <%= form_with model: article do |form| %>
 
+  <%= form.hidden_field :user_id, value: current_user.id %>
+
   <% @article.errors.full_messages.each do |message| %>
     <p class="danger"><%= message %></p>
   <%end%>

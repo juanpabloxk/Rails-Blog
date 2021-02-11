@@ -6,6 +6,9 @@ class ArticlesController < ApplicationController
 
   def show
     @article = Article.find(params[:id])
+    unless current_user.followeds.include? @article.user or current_user == @article.user
+      render 'forbiden'
+    end
   end
 
   def new
@@ -47,7 +50,7 @@ class ArticlesController < ApplicationController
   private
 
   def article_params
-    params.require(:article).permit(:title, :body, :status, :image_url, :category_id)
+    params.require(:article).permit(:title, :body, :status, :image_url, :category_id, :user_id)
   end
 
 end

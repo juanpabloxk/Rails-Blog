@@ -1,6 +1,7 @@
 <div class="blog-post">
   
   <h2 class="blog-post-title"><%= @article.title %></h2>
+  <h5>By <%= link_to '@'+@article.user.username, @article.user %></h5>
   <img class="m-3 img-responsive" style="float:right; max-width: 50%;" src=<%= @article.image_url %> alt="">
   <p><%= simple_format(@article.body) %></p>
   

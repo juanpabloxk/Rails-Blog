@@ -1,15 +1,21 @@
-<div class="card mb-4">
-  <div class="card-header">
-    <span class="font-weight-bold">@<%= comment.commenter %></span> on
-    <span><%=  comment.created_at.strftime("%B %d of %Y") %></span>
-    <%= link_to 'delete', [comment.article.category, comment.article, comment],
-    method: :delete,
-    data: { confirm: "Are you sure?" }, class: "float-right" %>
+<% if comment.user.followers.include? current_user or current_user == comment.user %>
+  <div class="card mb-4">
+    <div class="card-header">
+      <span class="font-weight-bold"><%= link_to '@'+comment.user.username, comment.user %> </span> on
+      <span><%=  comment.created_at.strftime("%B %d of %Y") %></span>
+      <%= link_to 'delete', [comment.article.category, comment.article, comment],
+      method: :delete,
+      data: { confirm: "Are you sure?" }, class: "float-right" %>
+    </div>
+    <div class="card-body">
+      <blockquote class="blockquote">
+        <p><%= simple_format(comment.body) %></p>
+        <footer>  </footer>
+      </blockquote>
+    </div>
   </div>
-  <div class="card-body">
-    <blockquote class="blockquote">
-      <p><%= simple_format(comment.body) %></p>
-      <footer>  </footer>
-    </blockquote>
-  </div>
-</div>
+<%else%>
+  <p class="alert alert-light mt-3">
+    This comment is hidden because you aren't following it's author (<%= link_to '@'+comment.user.username, comment.user %>)
+  </p>
+<%end%>
