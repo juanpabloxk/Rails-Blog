@@ -18,6 +18,7 @@
   </div>
 <%else%>
   <p class="alert alert-light mt-3">
-    This comment is hidden because you aren't following it's author (<%= link_to '@'+comment.user.username, comment.user %>)
+  This comment is hidden because you aren't following it's author (<%= link_to '@'+comment.user.username, comment.user %>)
   </p>
 <%end%>
+

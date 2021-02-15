@@ -2,7 +2,7 @@
 <div class="form-signin text-center">
   <%= form_for @user do |f|%>
     <% @user.errors.full_messages.each do |message| %>
-        <p class="alert alert-danger mt-3"><%= message %></p>
+      <p class="alert alert-danger mt-3"><%= message %></p>
     <%end%>
     <div class="input-group mb-3">
       <div class="input-group-prepend">
@@ -19,3 +19,4 @@
     <%= f.submit "Create", :class => 'btn btn-lg btn-primary btn-block' %>
   <%end%>
 </div>
+

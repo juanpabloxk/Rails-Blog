@@ -1,29 +1,30 @@
 <div class="blog-post">
-  
+
   <h2 class="blog-post-title"><%= @article.title %></h2>
   <strong>By <%= link_to '@'+@article.user.username, @article.user %></strong>
   <img class="m-3 img-responsive" style="float:right; max-width: 50%;" src=<%= @article.image_url %> alt="">
   <p><%= simple_format(@article.body) %></p>
-  
+
   <nav class="blog-pagination mb-4">
     <%= link_to "Edit post", edit_article_path(@article), class: "btn btn-outline-secondary rounded" %>
     <%= link_to "Delete post", article_path(@article),
-    method: :delete,
-    data: { confirm: "Are you sure?" }, class: "btn btn-outline-secondary rounded" %>
+      method: :delete,
+      data: { confirm: "Are you sure?" }, class: "btn btn-outline-secondary rounded" %>
     <div class="btn btn-outline-secondary rounded" onclick="getElementById('add_comment').classList.remove('hidden')">Leave a comment</div>
   </nav>
-  
+
   <% unless @article.comments.empty? %>
-  <h2 class="mt-5">Comments</h2>
-  <div class="mt-4">
-    <div class="">
-      <%= render @article.comments %>
+    <h2 class="mt-5">Comments</h2>
+    <div class="mt-4">
+      <div class="">
+        <%= render @article.comments %>
+      </div>
     </div>
-  </div>
   <% end %>
-  
+
   <div class="hidden" id="add_comment">
     <%= render 'comments/form' %>
   </div>
-  
+
 </div>
+
