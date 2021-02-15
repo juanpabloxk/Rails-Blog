@@ -23,4 +23,3 @@ class ApplicationController < ActionController::Base
     @categories
   end
 end
-

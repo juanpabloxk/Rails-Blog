@@ -49,4 +49,3 @@ class ArticlesController < ApplicationController
     params.require(:article).permit(:title, :body, :status, :image_url, :category_id, :user_id)
   end
 end
-
