@@ -34,3 +34,4 @@ class UsersController < ApplicationController
     redirect_to request.referrer
   end
 end
+

@@ -34,3 +34,4 @@ class SessionsController < ApplicationController
     render layout: 'external'
   end
 end
+
