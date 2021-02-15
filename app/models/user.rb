@@ -17,5 +17,13 @@ class User < ApplicationRecord
     '@'+self.username
   end
 
+  def equal?(other)
+    if other.nil?
+      false
+    else
+      self.id == other.id
+    end
+  end
+
 end
 

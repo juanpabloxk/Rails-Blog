@@ -1,14 +1,14 @@
 <h1><%= @user.username.capitalize %>'s profile</h1>
-<% unless current_user == @user %>
+<% unless current_user.equal?(@user) %>
   <nav class="blog-pagination mt-3">
     <% if @user.followers.include? current_user %>
-      <%= form_tag "/users/#{@user.id}/unfollow" do %>
+      <%= form_tag user_unfollow_path(@user) do %>
         <%= hidden_field_tag 'followed_user_id', @user.id %>
         <%= hidden_field_tag 'follower_user_id', current_user.id %>
         <%= submit_tag "Unfollow", class: "btn btn-outline-secondary rounded" %>
       <%end%>    
     <% else %>
-      <%= form_tag "/users/#{@user.id}/follow" do %>
+      <%= form_tag user_follow_path(@user) do %>
         <%= hidden_field_tag 'followed_user_id', @user.id %>
         <%= hidden_field_tag 'follower_user_id', current_user.id %>
         <%= submit_tag "Follow", class: "btn btn-outline-secondary rounded" %>

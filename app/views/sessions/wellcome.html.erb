@@ -4,7 +4,7 @@
   <% end %>
   <% if logged_in? %>
     <h1>You are Logged In, <%= current_user.username %></h1>
-    <a href="/articles">Go to articles</a>
+    <%= link_to "Go to articles", articles_url %>
   <% else%>
     <div class="row d-flex justify-content-center">
       <%= button_to "Login", login_url, method: :get, class: "btn btn-lg btn-primary m-5"%>
