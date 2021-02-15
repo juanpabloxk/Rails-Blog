@@ -1,39 +1,30 @@
 <%= form_with model: article do |form| %>
-
   <%= form.hidden_field :user_id, value: current_user.id %>
-
   <% @article.errors.full_messages.each do |message| %>
     <p class="danger"><%= message %></p>
   <%end%>
-
   <div class="input-group mt-3">
     <%= form.label :title, class:"input-group-text" %><br>
     <%= form.text_field :title, class: "form-control" %>
   </div>
-
   <div class="input-group mt-3">
     <%= form.label :body, class: "input-group-text" %><br>
     <%= form.text_area :body, class: "big form-control" %><br>
   </div>
-
   <div class="input-group mt-3">
     <%= form.label :image_url, class: "input-group-text" %><br>
     <%= form.text_field :image_url, class: "form-control" %><br>
   </div>
-
   <div class="col d-flex justify-content-center input-group mt-3">
     <%= form.label "Visibility", class: "input-group-text mr-2" %><br>
     <%= form.select :status, ['public', 'private', 'archived'], selected: 'public', class: "form-control" %>
   </div>
-
   <div class="col d-flex justify-content-center input-group mt-3">
     <%= form.label "Category", class: "input-group-text mr-2" %><br>
     <%= form.collection_select(:category_id, Category.all, :id, :name) %>
   </div>
-
   <div class="col d-flex justify-content-center mb-4 mt-3">
     <%= form.submit "Upload", :class => 'btn btn-primary rounded' %>
   </div>
-
 <% end %>
 

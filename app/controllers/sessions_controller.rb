@@ -1,9 +1,9 @@
 class SessionsController < ApplicationController
   skip_before_action :authorized, only: [:new, :create, :wellcome, :auth_errors, :unauthorized]
   helper_method :auth_errors
+  layout 'external'
 
   def new
-    render layout: 'external'
   end
 
   def create
@@ -27,11 +27,10 @@ class SessionsController < ApplicationController
 
   def unauthorized
     @auth_errors = ["You must log-in to see this page"] 
-    wellcome
+    render 'wellcome'
   end
 
   def wellcome
-    render layout: 'external'
   end
 end
 

@@ -1,10 +1,7 @@
 <div class="col-md-6 mx-auto">
-
   <h2 class="text-center">Add a comment</h2>
-
   <%= form_with model: [ @article.category, @article, @article.comments.build ] do |form| %>
     <%= form.hidden_field :user_id, value: current_user.id %>
-
     <div class="input-group mb-2"> 
       <div class="input-group-prepend">
         <span class="input-group-text">Comment</span>
@@ -12,13 +9,11 @@
       <%= form.text_area :body, class: "form-control" %>
       <%= form.select :status, ['public', 'private', 'archived'], selected: 'public', class: "dropdown" %>      
     </div>
-
     <div class="row mb-4">
       <div class="col d-flex justify-content-center">
         <%= form.submit 'Comment', :class => 'btn btn-primary rounded' %>
       </div>
     </div>
   <% end %>
-
 </div>
 

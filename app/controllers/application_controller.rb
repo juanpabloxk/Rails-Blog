@@ -13,7 +13,7 @@ class ApplicationController < ActionController::Base
   end
 
   def authorized
-    redirect_to '/unauthorized' unless logged_in?
+    redirect_to unauthorized_url unless logged_in?
   end
 
   def cached_categories
