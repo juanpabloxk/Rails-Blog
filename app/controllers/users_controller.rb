@@ -23,15 +23,19 @@ class UsersController < ApplicationController
   def add_follower
     follower = User.find(params[:follower_user_id])
     followed = User.find(params[:followed_user_id])
-    followed.followers << follower
-    redirect_to request.referrer
+    if followed and follower
+      followed.followers << follower
+      redirect_to request.referrer
+    end
   end
 
   def del_follower
     follower = User.find(params[:follower_user_id])
     followed = User.find(params[:followed_user_id])
-    followed.followers.delete(follower) 
-    redirect_to request.referrer
+    if followed and follower
+      followed.followers.delete(follower) 
+      redirect_to request.referrer
+    end
   end
 end
 
