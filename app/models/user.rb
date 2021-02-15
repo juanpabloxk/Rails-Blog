@@ -12,5 +12,10 @@ class User < ApplicationRecord
   # Users I follow
   has_many :rel_followeds, foreign_key: :follower_id, class_name: :Follow
   has_many :followeds, :through => :rel_followeds, :source => :followed
+
+  def at_name
+    '@'+self.username
+  end
+
 end
 
