@@ -18,11 +18,12 @@ class User < ApplicationRecord
   end
 
   def equal?(other)
-    if other.nil?
-      false
-    else
-      self.id == other.id
-    end
+    return false if other.blank?
+    self.id == other.id
+  end
+
+  def can_see?(other)
+    other.id == self.id or self.followeds.include?(other)
   end
 
 end

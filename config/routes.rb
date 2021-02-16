@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
   root 'sessions#wellcome'
   resources :users, only: [:new,:create,:index,:show] do
-    post "follow", to: "users#add_follower"
-    post "unfollow", to: "users#del_follower"
+    post "follow", to: "users#follow"
+    post "unfollow", to: "users#unfollow"
   end
   get "unauthorized", to: "sessions#unauthorized"
   get "login", to: "sessions#new"

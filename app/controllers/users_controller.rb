@@ -20,19 +20,19 @@ class UsersController < ApplicationController
     redirect_to articles_path
   end
 
-  def add_follower
+  def follow
     follower = User.find(params[:follower_user_id])
     followed = User.find(params[:followed_user_id])
-    if followed and follower
+    unless followed.blank? or follower.blank?
       followed.followers << follower
       redirect_to request.referrer
     end
   end
 
-  def del_follower
+  def unfollow
     follower = User.find(params[:follower_user_id])
     followed = User.find(params[:followed_user_id])
-    if followed and follower
+    unless followed.blank? or follower.blank?
       followed.followers.delete(follower) 
       redirect_to request.referrer
     end

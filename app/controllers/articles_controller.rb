@@ -5,7 +5,7 @@ class ArticlesController < ApplicationController
 
   def show
     @article = Article.find(params[:id])
-    unless current_user.followeds.include? @article.user or current_user == @article.user
+    unless current_user.can_see?(@article.user)
       render 'forbiden'
     end
   end
