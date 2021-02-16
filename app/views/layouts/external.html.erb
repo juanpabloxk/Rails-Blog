@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Wellcome</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+  <body class="text-center">
+    <div class="cover-container d-flex h-100 p-3 mx-auto flex-column">
+      <div class="row d-flex justify-content-center mt-5">
+        <div class="col-6">     
+          <header class="masthead mb-auto">
+            <div class="inner">
+              <h1 class="masthead-brand mb-5">Rails News Blog</h1>
+              <p class="lead mb-5">
+              <% unless cached_categories.nil? || cached_categories.empty? %>
+                We have news about
+                <% cached_categories.sample(15).each do |category| %>
+                  <span class="badge bg-dark bg-secondary text-light"><%= category %></span>
+                <% end %>
+                and more...
+              <% end %>
+              </p>
+            </div>
+          </header>
+          <main role="main" class="inner cover"><%= yield %></main>
+        </div>    
+      </div>
+    </div>
+  </body>
+</html>
+

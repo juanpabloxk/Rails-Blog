@@ -1,0 +1,43 @@
+<h1><%= @user.username.capitalize %>'s profile</h1>
+<% unless current_user.equal?(@user) %>
+  <nav class="blog-pagination mt-3">
+    <% if @user.followers.include? current_user %>
+      <%= form_tag user_unfollow_path(@user) do %>
+        <%= hidden_field_tag 'followed_user_id', @user.id %>
+        <%= hidden_field_tag 'follower_user_id', current_user.id %>
+        <%= submit_tag "Unfollow", class: "btn btn-outline-secondary rounded" %>
+      <%end%>    
+    <% else %>
+      <%= form_tag user_follow_path(@user) do %>
+        <%= hidden_field_tag 'followed_user_id', @user.id %>
+        <%= hidden_field_tag 'follower_user_id', current_user.id %>
+        <%= submit_tag "Follow", class: "btn btn-outline-secondary rounded" %>
+      <%end%>
+    <%end%>
+  </nav>
+<% end %>
+<br>
+
+<div class="row mt-2">
+  <%= render 'info_card', title: 'Followers', value: @user.followers.length %>
+  <%= render 'info_card', title: 'Following', value: @user.followeds.length %>
+  <%= render 'info_card', title: 'Posts', value: @user.articles.length %>
+  <%= render 'info_card', title: 'Comments', value: @user.comments.length %>
+</div>
+
+<div class="row mb-2">
+  <% unless @user.followers.empty? %>
+    <%= render 'list_view', list: @user.followers, title: 'Followers', attribute: :at_name %>
+  <%end%>
+
+  <% unless @user.followeds.empty? %>
+    <%= render 'list_view', list: @user.followeds, title: 'Following', attribute: :at_name %>
+  <%end%>
+</div>
+
+<% unless @user.articles.empty? %>
+  <div class="row mb-2">
+    <%= render 'list_view', list: @user.articles, title: 'Lattest posts', attribute: :title %>
+  </div>
+<%end%>
+

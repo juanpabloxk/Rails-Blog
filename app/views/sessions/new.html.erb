@@ -1,0 +1,19 @@
+<h2 class="text-center mb-5">Please Sign In</h2>
+<div class="form-signin text-center">
+  <%= form_tag login_url do %>
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <div class="input-group-text">Username</div>
+      </div>
+      <%= text_field_tag :username, nil, class: 'form-control' %>
+    </div>
+    <div class="input-group mb-4">
+      <div class="input-group-prepend">
+        <div class="input-group-text">Password</div>
+      </div>
+      <%= password_field_tag :password, nil, class: 'form-control' %>
+    </div>
+    <%= submit_tag "Login", class: "btn btn-lg btn-primary btn-block" %>
+  <%end%>
+</div>
+

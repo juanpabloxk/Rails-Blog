@@ -1,13 +1,13 @@
 class ArticlesController < ApplicationController
-  
-  #http_basic_authenticate_with name: "user", password: "secret", except: [:index, :show]
-
   def index
     @articles = Article.all
   end
 
   def show
     @article = Article.find(params[:id])
+    unless current_user.can_see?(@article.user)
+      render 'forbiden'
+    end
   end
 
   def new
@@ -17,7 +17,6 @@ class ArticlesController < ApplicationController
 
   def create
     @article = Article.new(article_params)
-
     if @article.save
       redirect_to @article
     else
@@ -31,7 +30,6 @@ class ArticlesController < ApplicationController
 
   def update
     @article = Article.find(params[:id])
-
     if @article.update(article_params)
       redirect_to @article
     else
@@ -42,14 +40,12 @@ class ArticlesController < ApplicationController
   def destroy
     @article = Article.find(params[:id])
     @article.destroy
-
     redirect_to root_path
   end
 
   private
 
   def article_params
-    params.require(:article).permit(:title, :body, :status, :image_url, :category_id)
+    params.require(:article).permit(:title, :body, :status, :image_url, :category_id, :user_id)
   end
-
 end

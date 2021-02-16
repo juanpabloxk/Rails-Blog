@@ -4,14 +4,14 @@
     <p class="lead my-3">Our blog has <%= Category.all.length %> categories and counting!</p> 
   </div>
 </div>
-
 <div class="row mb-2">
   <ul>
     <% @categories.each do |category| %>
-    <li>
-      <%= link_to category.name, category %>
-      (<%=category.articles.length%> articles) <%= category.description %>
-    </li>
+      <li>
+        <%= link_to category.name, category %>
+        (<%=category.articles.length%> articles) <%= category.description %>
+      </li>
     <% end %>
   </ul>
 </div>
+
