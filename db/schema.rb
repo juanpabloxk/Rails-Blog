@@ -23,7 +23,7 @@ ActiveRecord::Schema.define(version: 2021_02_10_203700) do
     t.string "status"
     t.string "image_url"
     t.bigint "category_id", null: false
-    t.bigint "user_id", default: 1, null: false
+    t.bigint "user_id", null: false
     t.index ["category_id"], name: "index_articles_on_category_id"
     t.index ["user_id"], name: "index_articles_on_user_id"
   end
@@ -42,7 +42,7 @@ ActiveRecord::Schema.define(version: 2021_02_10_203700) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "status"
-    t.bigint "user_id", default: 1, null: false
+    t.bigint "user_id", null: false
     t.index ["article_id"], name: "index_comments_on_article_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
@@ -55,8 +55,8 @@ ActiveRecord::Schema.define(version: 2021_02_10_203700) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "username"
-    t.string "password_digest"
+    t.string "username", null: false
+    t.string "password_digest", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
