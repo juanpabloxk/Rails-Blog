@@ -1,12 +1,8 @@
 require 'ruby-graphviz'
 
 module UsersHelper
-  def self.user_graph_path(user)
-    "assets/images/usergraphs/#{user.id}.svg"
-  end
-
   def self.internal_user_graph_path(user)
-    "assets/images/usergraphs/#{user.id}.svg"
+    "app/assets/images/usergraphs/#{user.id}.svg"
   end
 
   def image_for_user_exists?(user)
