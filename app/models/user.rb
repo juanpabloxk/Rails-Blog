@@ -26,5 +26,9 @@ class User < ApplicationRecord
     other.id == self.id or self.followeds.include?(other)
   end
 
+  def owns_article?(article)
+    article.user_id == self.id
+  end
+
 end
 
