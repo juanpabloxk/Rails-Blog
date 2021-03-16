@@ -1,8 +1,14 @@
+<% content_for :articles_css do %>
+  <%= stylesheet_link_tag "github.css" %>
+<% end %>
+
 <div class="blog-post">
   <h2 class="blog-post-title"><%= @article.title %></h2>
   <strong>By <%= link_to @article.user.at_name, @article.user %></strong>
-  <img class="m-3 img-responsive" style="float:right; max-width: 50%;" src=<%= @article.image_url %> alt="">
-  <p><%= simple_format(@article.body) %></p>
+  <p><img class="m-3 img-responsive" style="float:right; max-width: 50%;" src=<%= @article.image_url %> alt=""></p>
+
+  <%= markdown_to_html(@article.body) %>
+
   <nav class="blog-pagination mb-4">
     <%= link_to "Edit post", edit_article_path(@article), class: "btn btn-outline-secondary rounded" %>
     <%= link_to "Delete post", article_path(@article),

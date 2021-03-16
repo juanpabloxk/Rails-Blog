@@ -7,7 +7,7 @@
       </h3>
       <div class="mb-1 text-muted"><%= article.created_at.strftime("%B %d of %Y") %></div>
       <p class="card-text mb-auto">
-      <%= article.body[0,180]...%> 
+      <%= markdown_to_plain(article.body[0,180])%> 
       <%= link_to "Continue reading", article %>
       </p>
     </div>
