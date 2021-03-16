@@ -5,13 +5,14 @@
       <h3 class="mb-0">
         <%= article.title %>
       </h3>
-      <div class="mb-1 text-muted"><%= article.created_at.strftime("%B %d of %Y") %></div>
+      <div class="mb-1 text-muted">updated <%= time_ago_in_words(article.updated_at)%> ago</div>
       <p class="card-text mb-auto">
-      <%= markdown_to_plain(article.body[0,180])%> 
+      <%= markdown_to_plain(article.body[0,180])...%> 
       <%= link_to "Continue reading", article %>
       </p>
     </div>
-    <img class="card-img-right flex-auto d-none d-md-block" alt="Thumbnail" style="width: 200px; height: 250px;" src=<%= article.image_url %> data-holder-rendered="true">
+    <% unless article.image_url.blank? %>
+      <img class="card-img-right flex-auto d-none d-md-block" alt="Thumbnail" style="width: 200px; height: 250px;" src=<%= article.image_url %> data-holder-rendered="true">
+    <% end %>
   </div>
 </div>
-
