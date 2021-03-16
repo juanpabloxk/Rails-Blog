@@ -1,4 +1,10 @@
-/* open-sans-regular - latin-ext_latin */
+img {
+    max-width: 80vw !important;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 @font-face {
     font-family: 'Open Sans';
     font-style: normal;
