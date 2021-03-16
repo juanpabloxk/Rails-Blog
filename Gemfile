@@ -25,7 +25,7 @@ gem 'jbuilder', '~> 2.7'
 # Use Active Model has_secure_password
 gem 'bcrypt'
 gem 'redcarpet' # Markdown to Plain Text and Markdown to HTML
-
+gem 'ruby-graphviz'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 

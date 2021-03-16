@@ -41,3 +41,13 @@
   </div>
 <%end%>
 
+<% if image_for_user_exists? @user %>
+  <div class="row mb-2">
+    <div class="col-md mt-3">
+      <ul class="list-group">
+        <h4>User graph</h4>
+        <%= image_tag("usergraphs/#{@user.id}.svg") %>
+      </ul>
+    </div>
+  </div>
+<% end %>

@@ -17,6 +17,7 @@ class UsersController < ApplicationController
   def create
     @user = User.create(params.require(:user).permit(:username,:password))
     session[:user_id] = @user.id
+    UsersHelper.create_user_graph @user
     redirect_to articles_path
   end
 
@@ -25,6 +26,7 @@ class UsersController < ApplicationController
     followed = User.find(params[:followed_user_id])
     unless followed.blank? or follower.blank?
       followed.followers << follower
+      UsersHelper.create_user_graph followed
       redirect_to request.referrer
     end
   end
@@ -33,7 +35,8 @@ class UsersController < ApplicationController
     follower = User.find(params[:follower_user_id])
     followed = User.find(params[:followed_user_id])
     unless followed.blank? or follower.blank?
-      followed.followers.delete(follower) 
+      followed.followers.delete(follower)
+      UsersHelper.create_user_graph followed
       redirect_to request.referrer
     end
   end
