@@ -6,7 +6,7 @@ module UsersHelper
   end
 
   def self.internal_user_graph_path(user)
-    "app/assets/images/usergraphs/#{user.id}.svg"
+    "assets/images/usergraphs/#{user.id}.svg"
   end
 
   def image_for_user_exists?(user)
