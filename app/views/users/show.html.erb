@@ -25,6 +25,17 @@
   <%= render 'info_card', title: 'Comments', value: @user.comments.length %>
 </div>
 
+<div class="row mb-2 shadow">
+  <div class="col-md mt-3">
+    <ul class="list-group">
+      <h4>Social Network graph</h4>
+      <div class="mx-auto" style="max-width: 100%;">
+        <%= @graph_image %>
+      </div>
+    </ul>
+  </div>
+</div>
+
 <div class="row mb-2">
   <% unless @user.followers.empty? %>
     <%= render 'list_view', list: @user.followers, title: 'Followers', attribute: :at_name %>
@@ -41,11 +52,3 @@
   </div>
 <%end%>
 
-<div class="row mb-2">
-  <div class="col-md mt-3">
-    <ul class="list-group">
-      <h4>Social Network graph</h4>
-      <%= image_tag(@graph_image) %>
-    </ul>
-  </div>
-</div>
