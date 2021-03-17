@@ -1,16 +1,13 @@
 require 'ruby-graphviz'
 require 'fileutils'
+require 'tempfile'
 
 module UsersHelper
 
-  IMAGES_PATH = "app/assets/images/usergraphs"
+  IMAGES_PATH = "app/assets/images/"
 
-  def self.internal_user_graph_path(user)
-    "#{IMAGES_PATH}/#{user.id}.svg"
-  end
-
-  def image_for_user_exists?(user)
-    File.exists?(Rails.root.join UsersHelper.internal_user_graph_path(user))
+  def self.internal_user_graph_path
+    Rails.root.join IMAGES_PATH
   end
 
   def self.create_user_graph(user)
@@ -20,8 +17,13 @@ module UsersHelper
       follower_node = g.add_nodes("#{follower.username}")
       g.add_edges( follower_node, user_node )
     end
-    FileUtils.mkdir_p(IMAGES_PATH)
-    file = Rails.root.join UsersHelper.internal_user_graph_path(user)
-    g.output( :svg => file )
+    user.followeds.each do |followed|
+      followed_node = g.add_nodes("#{followed.username}")
+      g.add_edges( user_node, followed_node )
+    end
+    file = Tempfile.new(['userimage','.svg'])
+    g.output( :svg => file.path )
+    FileUtils.mv(file.path, UsersHelper.internal_user_graph_path)
+    File.basename(file.path)
   end
 end

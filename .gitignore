@@ -6,6 +6,7 @@
 
 #Ignore user images
 /app/assets/images/usergraphs/*
+/app/assets/images/userimage*
 
 # Ignore bundler config.
 /.bundle
