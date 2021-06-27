@@ -4,8 +4,8 @@ class ApplicationController < ActionController::Base
   helper_method :logged_in?
   helper_method :cached_categories
 
-  def current_user    
-    User.find_by(id: session[:user_id])  
+  def current_user
+    User.find_by(id: session[:user_id])
   end
 
   def logged_in?
@@ -17,9 +17,7 @@ class ApplicationController < ActionController::Base
   end
 
   def cached_categories
-    unless defined? @categories
-      @categories = Category.all.map { |c| c.name }
-    end
+    @categories = Category.all.map(&:name) unless defined? @categories
     @categories
   end
 end

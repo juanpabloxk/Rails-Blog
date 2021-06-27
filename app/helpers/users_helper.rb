@@ -3,8 +3,7 @@ require 'fileutils'
 require 'tempfile'
 
 module UsersHelper
-
-  IMAGES_PATH = "app/assets/images/"
+  IMAGES_PATH = 'app/assets/images/'.freeze
 
   def self.internal_user_graph_path
     Rails.root.join IMAGES_PATH
@@ -13,7 +12,7 @@ module UsersHelper
   def self.create_user_graph(user)
     g = GraphViz.new( :G, :type => :digraph )
     user_node = g.add_nodes("#{user.username}")
-    user_node.set { |_n| _n.color = "#1976D2" }
+    user_node.set { |_n| _n.color = '#1976D2' }
     user.followers.each do |follower|
       follower_node = g.add_nodes("#{follower.username}")
       g.add_edges( follower_node, user_node )
