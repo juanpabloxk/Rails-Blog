@@ -29,6 +29,4 @@ class User < ApplicationRecord
   def owns_article?(article)
     article.user_id == self.id
   end
-
 end
-
