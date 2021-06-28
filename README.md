@@ -20,9 +20,20 @@ bin/rails db:migrate RAILS_ENV=test
 bin/rails db:migrate RAILS_ENV=development
 ```
 
+## Create initial data
+
+Open a rails console and run:
+
+```
+User.new(username: 'JuanP', password: '1234').save
+Category.new(name: 'Sports', description: 'News about sports').save
+```
+
 ## Testing setup
 
 This project uses RSpec, I followed [this guide](https://danielabaron.me/blog/start-rails-6-project-with-rspec/)
+
+Other useful link: [here](https://matthewhoelter.com/2019/09/12/setting-up-and-testing-rails-6.0-with-rspec-factorybot-and-devise.html)
 
 ## Troubleshoot
 
