@@ -24,18 +24,18 @@ class UsersController < ApplicationController
   def follow
     follower = User.find(params[:follower_user_id])
     followed = User.find(params[:followed_user_id])
-    unless followed.blank? || follower.blank?
-      followed.followers << follower
-      redirect_to request.referrer
-    end
+    return if followed.blank? || follower.blank?
+
+    followed.followers << follower
+    redirect_to request.referrer
   end
 
   def unfollow
     follower = User.find(params[:follower_user_id])
     followed = User.find(params[:followed_user_id])
-    unless followed.blank? || follower.blank?
-      followed.followers.delete(follower)
-      redirect_to request.referrer
-    end
+    return if followed.blank? || follower.blank?
+
+    followed.followers.delete(follower)
+    redirect_to request.referrer
   end
 end

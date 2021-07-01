@@ -9,10 +9,13 @@ development:
   <<: *default
   database: blog_dev
   host: localhost
+  password: 'postgres'
 
 test:
   <<: *default
   database: blog_test
+  host: localhost
+  password: 'postgres'
 
 production:
   <<: *default
