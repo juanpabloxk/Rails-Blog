@@ -5,9 +5,7 @@ class ArticlesController < ApplicationController
 
   def show
     @article = Article.find(params[:id])
-    unless current_user.can_see?(@article.user)
-      render 'forbiden'
-    end
+    render 'forbiden' unless current_user.can_see?(@article.user)
   end
 
   def new

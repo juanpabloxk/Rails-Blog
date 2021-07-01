@@ -10,19 +10,19 @@ module UsersHelper
   end
 
   def self.create_user_graph(user)
-    g = GraphViz.new( :G, :type => :digraph )
-    user_node = g.add_nodes("#{user.username}")
+    g = GraphViz.new(:G, type: :digraph)
+    user_node = g.add_nodes(user.username.to_s)
     user_node.set { |_n| _n.color = '#1976D2' }
     user.followers.each do |follower|
-      follower_node = g.add_nodes("#{follower.username}")
-      g.add_edges( follower_node, user_node )
+      follower_node = g.add_nodes(follower.username.to_s)
+      g.add_edges(follower_node, user_node)
     end
     user.followeds.each do |followed|
-      followed_node = g.add_nodes("#{followed.username}")
-      g.add_edges( user_node, followed_node )
+      followed_node = g.add_nodes(followed.username.to_s)
+      g.add_edges(user_node, followed_node)
     end
-    file = Tempfile.new(['userimage','.svg'])
-    g.output( :svg => file.path )
+    file = Tempfile.new(['userimage', '.svg'])
+    g.output(svg: file.path)
     file.read.html_safe
   end
 end

@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  skip_before_action :authorized, only: [:new, :create]
+  skip_before_action :authorized, only: %i[new create]
 
   def index
     @users = User.all
@@ -16,7 +16,7 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.create(params.require(:user).permit(:username,:password))
+    @user = User.create(params.require(:user).permit(:username, :password))
     session[:user_id] = @user.id
     redirect_to articles_path
   end
@@ -24,7 +24,7 @@ class UsersController < ApplicationController
   def follow
     follower = User.find(params[:follower_user_id])
     followed = User.find(params[:followed_user_id])
-    unless followed.blank? or follower.blank?
+    unless followed.blank? || follower.blank?
       followed.followers << follower
       redirect_to request.referrer
     end
@@ -33,10 +33,9 @@ class UsersController < ApplicationController
   def unfollow
     follower = User.find(params[:follower_user_id])
     followed = User.find(params[:followed_user_id])
-    unless followed.blank? or follower.blank?
+    unless followed.blank? || follower.blank?
       followed.followers.delete(follower)
       redirect_to request.referrer
     end
   end
 end
-
