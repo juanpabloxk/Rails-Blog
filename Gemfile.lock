@@ -148,7 +148,7 @@ GEM
     nio4r (2.5.9)
     nokogiri (1.15.4-x86_64-linux)
       racc (~> 1.4)
-    pg (1.5.3)
+    pg (1.5.4)
     popper_js (2.11.8)
     public_suffix (5.0.1)
     puma (6.3.0)
