@@ -79,7 +79,7 @@ GEM
       execjs (~> 2)
     bcrypt (3.1.19)
     bindex (0.8.1)
-    bootsnap (1.16.0)
+    bootsnap (1.17.0)
       msgpack (~> 1.2)
     bootstrap (5.3.1)
       autoprefixer-rails (>= 9.1.0)
@@ -135,7 +135,7 @@ GEM
     method_source (1.0.0)
     mini_mime (1.1.5)
     minitest (5.19.0)
-    msgpack (1.7.0)
+    msgpack (1.7.2)
     net-imap (0.3.7)
       date
       net-protocol
